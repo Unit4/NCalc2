@@ -667,6 +667,18 @@ namespace NCalc.Tests
 
             Assert.Equal(expected,result);
         }
+
+        [Fact]
+        public void ShouldSupportAbsenceModuleMissingFunctionParameter()
+        {
+            var eif = new Expression("if(11 <> 0, 33)");
+
+            Assert.Equal(33, eif.Evaluate());
+
+            eif = new Expression("if(1 < 0, if(3 == 3, 1, 2))");
+
+            Assert.Equal(0, eif.Evaluate());
+        }
     }
 }
 
